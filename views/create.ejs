@@ -1,0 +1,21 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="create-game content">
+    <form action="/games" method="post">
+      <label for="name">Game name:</label>
+      <input type="text" id="name" name="name" required> 
+      <label for="url">URL:</label>
+      <input type="url" id="url" name="url" required>
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required>
+      <label for="date">Published Date:</label>
+      <input type="date" id="date" name="date" required>
+      <button>Submit</button>
+    </form>
+  </div>
+</body>
+</html>

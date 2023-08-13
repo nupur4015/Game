@@ -1,0 +1,20 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="games content">
+    <h2>All Games</h2>
+    <% if (games.length > 0) { %>
+      <% games.forEach(game => { %>
+        <a class="single" href="/games/<%= game._id %>">
+          <h3 class="name"><%= game.name %></h3>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>There are no games to display...</p>
+    <% } %>
+  </div> 
+</body>
+</html>

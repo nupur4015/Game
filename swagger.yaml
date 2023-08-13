@@ -1,0 +1,120 @@
+openapi: 3.0.0
+info:
+  title: Games
+  description: Get, delete, create and update games
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /games:
+    get:
+      description: List of games
+      responses:
+        '200':    
+          content:
+            text/html:
+              schema: 
+    post:
+      description: Create new game
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:         
+                  type: string
+                url:   
+                  type: url
+                author:
+                  type: string
+                date:
+                  type: date
+              required:
+                - name
+                - url
+                - author
+                - date
+      responses:
+        '200':    
+          content:
+            text/html:
+              schema: 
+  /games/create:
+    get:
+      description: Form to create new game
+      responses:
+        '200':    
+          content:
+            text/html:
+              schema: 
+  /games/{id}:
+    get:
+      description: Details of a single game
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ObjectId required
+      responses:
+        '200':    
+          content:
+            text/html:
+              schema:
+    delete:
+      description: Deletes a single object
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ObjectId required
+      responses:
+        '200':    
+          content:
+            application/json:
+              schema:
+  /games/edit/{id}:
+    get:
+      description: Form to edit games
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ObjectId required
+      responses:
+        '200':    
+          content:
+            text/html:
+              schema:
+    put:
+      description: Updating games
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ObjectId required
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                author:
+                  type: string
+                url:
+                  type: string
+                  example: "http://localhost:3000/games"
+                date:
+                  type: string
+                  example: "2023-08-11"
+      responses:
+        '201':    
+          content:
+            application/json:
+              schema:
+
+              

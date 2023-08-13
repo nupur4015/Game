@@ -1,0 +1,41 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= game.name %></h2>
+    <div class="content">
+      <p><strong>Author: </strong><%= game.author %></p>
+      <p><strong>URL: </strong><a href="<%= game.url %>" style="color:red"><%= game.url %></a></p>
+      <p><strong>Published date: </strong><%= game.date %></p>
+    </div>
+    <a class="edit" data-doc="<%= game._id %>" href="/games/edit/<%= game._id %>">
+      <img src="/edit.svg" alt="edit icon">
+    </a>
+      <a class="delete" data-doc="<%= game._id %>">
+        <img src="/trashcan.svg" alt="delete icon">
+    </a>
+  </div>
+
+
+  <script>
+    const trashcan = document.querySelector('a.delete');
+
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/games/${trashcan.dataset.doc}`;
+
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+
+    
+    
+  </script>
+</body>
+</html>
