@@ -4,7 +4,7 @@ info:
   description: Get, delete, create and update games
   version: 1.0.0
 servers:
-  - url: http://localhost:3000
+  - url: https://game-jvxp.onrender.com/
 paths:
   /games:
     get:
