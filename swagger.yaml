@@ -74,6 +74,10 @@ paths:
           content:
             application/json:
               schema:
+                type: object
+                properties:
+                  redirect:
+                    type: string
   /games/edit/{id}:
     get:
       description: Form to edit games
